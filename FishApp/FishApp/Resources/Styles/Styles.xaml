@@ -460,7 +460,7 @@
         <Setter Property="LineHeight" Value="1.2" />
     </Style>
 
-    <Style TargetType="Button" x:Key="PrimaryActionButtonStyle" BasedOn="{StaticResource {x:Type Button}}">
+    <Style TargetType="Button" x:Key="PrimaryActionButtonStyle">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
