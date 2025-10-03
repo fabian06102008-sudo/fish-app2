@@ -19,7 +19,7 @@
                 <Label Text="{Binding Result.WaterParameters.Gh, StringFormat='GH: {0}'}" />
                 <Label Text="{Binding Result.WaterParameters.Kh, StringFormat='KH: {0}'}" />
                 <Label Text="{Binding Result.WaterParameters.Temperature, StringFormat='Temperatur: {0} °C'}" />
-                <Label Text="{Binding Result.IncompatibleDescription, StringFormat='Nicht verträglich mit: {0}}" />
+                <Label Text="{Binding Result.IncompatibleDescription, StringFormat='Nicht verträglich mit: {0}'}" />
             </StackLayout>
 
             <Label
