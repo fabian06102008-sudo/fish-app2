@@ -14,7 +14,7 @@
             <Label Text="{Binding WaterParameters.Gh, StringFormat='GH: {0}'}" />
             <Label Text="{Binding WaterParameters.Kh, StringFormat='KH: {0}'}" />
             <Label Text="{Binding WaterParameters.Temperature, StringFormat='Temperatur: {0} °C'}" />
-            <Label Text="{Binding IncompatibleDescription, StringFormat='Feinde: {0}}" />
+            <Label Text="{Binding IncompatibleDescription, StringFormat='Feinde: {0}'}" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
