@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FishApp.Views.FishDatabasePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Fisch-Datenbank">
+    <VerticalStackLayout Padding="24" Spacing="12">
+        <SearchBar Placeholder="Nach Fisch suchen" Text="{Binding SearchText}" />
+        <CollectionView ItemsSource="{Binding FilteredFish}" SelectionMode="Single" SelectionChanged="OnFishSelected">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,5" Padding="15">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="18" />
+                            <Label Text="{Binding Origin, StringFormat='Herkunft: {0}'}" />
+                            <Label Text="{Binding Temperament}" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

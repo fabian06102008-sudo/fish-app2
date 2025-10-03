@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FishApp.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="FishApp">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="24"
+            Spacing="20">
+            <Label
+                Text="Willkommen bei FishApp"
+                Style="{StaticResource TitleStyle}" />
+            <Label
+                Text="Verwalte deine Aquarien, stöbere in der Fisch-Datenbank oder suche gezielt nach Fischen."
+                Style="{StaticResource BodyStyle}" />
+
+            <Button
+                Text="Meine Aquarien"
+                SemanticProperties.Hint="Navigiert zu den gespeicherten Aquarien"
+                Clicked="OnAquariumsClicked"
+                Style="{StaticResource PrimaryActionButtonStyle}" />
+
+            <Button
+                Text="Fisch-Datenbank"
+                SemanticProperties.Hint="Öffnet die komplette Fischliste"
+                Clicked="OnDatabaseClicked" />
+
+            <Button
+                Text="Suche"
+                SemanticProperties.Hint="Suche nach einem Fisch"
+                Clicked="OnSearchClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

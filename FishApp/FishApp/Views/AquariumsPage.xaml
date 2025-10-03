@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FishApp.Views.AquariumsPage"
+    x:Name="RootPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Meine Aquarien">
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="18">
+            <Label Text="Aquarium hinzufügen" Style="{StaticResource TitleStyle}" />
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
+                <Entry Grid.ColumnSpan="2" Placeholder="Name" Text="{Binding NewAquariumName}" />
+                <Entry Grid.Row="1" Grid.ColumnSpan="2" Keyboard="Numeric" Placeholder="Liter" Text="{Binding NewAquariumLiters}" />
+                <Entry Grid.Row="2" Placeholder="pH" Keyboard="Numeric" Text="{Binding NewAquariumPh}" />
+                <Entry Grid.Row="2" Grid.Column="1" Placeholder="GH" Keyboard="Numeric" Text="{Binding NewAquariumGh}" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto">
+                <Entry Placeholder="KH" Keyboard="Numeric" Text="{Binding NewAquariumKh}" />
+                <Entry Grid.Column="1" Placeholder="Temperatur" Keyboard="Numeric" Text="{Binding NewAquariumTemperature}" />
+            </Grid>
+
+            <Button Text="Aquarium speichern" Command="{Binding AddAquariumCommand}" />
+
+            <Label Text="Meine Aquarien" Style="{StaticResource TitleStyle}" />
+            <CollectionView
+                ItemsSource="{Binding Aquariums}"
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedAquarium, Mode=TwoWay}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="0,5" Padding="15">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="18" />
+                                <Label Text="{Binding CapacityLiters, StringFormat='Kapazität: {0} Liter'}" />
+                                <Label Text="{Binding WaterParameters}" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Fische im Aquarium" Style="{StaticResource TitleStyle}" />
+                <Button
+                    Grid.Column="1"
+                    Text="Aquarium löschen"
+                    Clicked="OnDeleteAquariumClicked"
+                    IsEnabled="{Binding SelectedAquarium, Converter={StaticResource NullToBoolConverter}}" />
+            </Grid>
+
+            <CollectionView ItemsSource="{Binding SelectedAquarium.Fish}">
+                <CollectionView.EmptyView>
+                    <Label Text="Noch keine Fische hinzugefügt." />
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="0,5" Padding="10">
+                            <Label Text="{Binding FishName}" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="Fisch auswählen" Style="{StaticResource TitleStyle}" />
+            <Picker
+                Title="Fisch aus Datenbank"
+                ItemsSource="{Binding AvailableFish}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedFish, Mode=TwoWay}" />
+
+            <Button Text="Fisch hinzufügen" Clicked="OnAddFishClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

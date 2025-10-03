@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FishApp.Views.SearchPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Suche">
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="18">
+            <Label Text="Nach einem Fisch suchen" Style="{StaticResource TitleStyle}" />
+            <Entry Placeholder="Fischname" Text="{Binding Query}" />
+            <Button Text="Suchen" Command="{Binding SearchCommand}" />
+
+            <StackLayout IsVisible="{Binding Result, Converter={StaticResource NullToBoolConverter}}" Spacing="10">
+                <Label Text="{Binding Result.Name}" FontAttributes="Bold" FontSize="22" />
+                <Label Text="{Binding Result.Origin, StringFormat='Herkunft: {0}'}" />
+                <Label Text="{Binding Result.Temperament, StringFormat='Temperament: {0}'}" />
+                <Label Text="{Binding Result.MinimumTankSizeLiters, StringFormat='Mindestgröße: {0} Liter'}" />
+                <Label Text="{Binding Result.WaterParameters.Ph, StringFormat='pH: {0}'}" />
+                <Label Text="{Binding Result.WaterParameters.Gh, StringFormat='GH: {0}'}" />
+                <Label Text="{Binding Result.WaterParameters.Kh, StringFormat='KH: {0}'}" />
+                <Label Text="{Binding Result.WaterParameters.Temperature, StringFormat='Temperatur: {0} °C'}" />
+                <Label Text="{Binding Result.IncompatibleDescription, StringFormat='Nicht verträglich mit: {0}}" />
+            </StackLayout>
+
+            <Label
+                IsVisible="{Binding ShowNoResult}"
+                Text="Kein Fisch gefunden." />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
