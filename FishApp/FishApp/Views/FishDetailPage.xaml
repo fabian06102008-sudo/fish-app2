@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FishApp.Views.FishDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Fischdetails">
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="12">
+            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="28" />
+            <Label Text="{Binding Origin, StringFormat='Herkunft: {0}'}" />
+            <Label Text="{Binding Temperament, StringFormat='Temperament: {0}'}" />
+            <Label Text="{Binding MinimumTankSizeLiters, StringFormat='Mindestgröße: {0} Liter'}" />
+            <Label Text="{Binding WaterParameters.Ph, StringFormat='pH: {0}'}" />
+            <Label Text="{Binding WaterParameters.Gh, StringFormat='GH: {0}'}" />
+            <Label Text="{Binding WaterParameters.Kh, StringFormat='KH: {0}'}" />
+            <Label Text="{Binding WaterParameters.Temperature, StringFormat='Temperatur: {0} °C'}" />
+            <Label Text="{Binding IncompatibleDescription, StringFormat='Feinde: {0}}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
